@@ -30,17 +30,11 @@
   with_items: docker_images
   register: dockerfile
   tags: docker
-  
-- debug: var=dockerfile
-  tags: docker
 
 - name: Build docker images
   docker_image: path="{{ docker_images_storage_path }}/{{ item.name }}" name="{{ item.name }}" state=present
   with_items: docker_images
   register: first_build
-  tags: docker
-
-- debug: var=first_build
   tags: docker
 
 - name: Stop docker containers
@@ -53,9 +47,6 @@
   when: (item.1.changed or item.2.changed) and not item.3.changed
   register: container_stop
   tags: docker
-  
-- debug: var=container_stop
-  tags: docker
 
 - name: Remove old docker images
   docker_image: name="{{ item.0.name }}" state=absent
@@ -64,9 +55,6 @@
     - container_stop.results
   when: item.1.changed and not item.1.failed
   register: image_remove
-  tags: docker
-  
-- debug: var=image_remove
   tags: docker
 
 - name: Rebuild docker images
@@ -81,7 +69,4 @@
   docker: image={{ item.name }} command="{{ item.command }}" ports="{{ item.ports }}" expose="{{ item.expose }}" state=running
   with_items: docker_images
   register: docker_containers
-  tags: docker
-  
-- debug: var=docker_containers
   tags: docker
