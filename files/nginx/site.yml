@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  
+  roles:
+    - hostclick.epel_repo
+    - hostclick.nginx
+
+  vars_files:
+    - vars.yml

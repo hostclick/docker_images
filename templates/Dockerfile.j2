@@ -1,0 +1,13 @@
+FROM centos:centos6
+
+RUN yum -y install epel-release && \
+    yum -y update && \
+    yum -y install ansible --enablerepo=epel-testing && \
+    yum clean all && \
+	rm -rf /etc/ansible/*
+
+COPY . /etc/ansible/
+WORKDIR /etc/ansible
+RUN ansible-galaxy install -r requeriments.txt && \
+	ansible-playbook site.yml && \
+	rm -rf /etc/ansible/*

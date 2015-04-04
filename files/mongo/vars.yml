@@ -1,0 +1,5 @@
+is_docker_container: true
+
+mongo_type: mongod
+
+mongo_fork: "false"

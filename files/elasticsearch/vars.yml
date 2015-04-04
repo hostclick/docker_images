@@ -1,0 +1,3 @@
+es_script_disable_dynamic: false
+
+is_docker_container: true

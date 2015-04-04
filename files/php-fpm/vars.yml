@@ -1,0 +1,10 @@
+php_fpm_listen: 127.0.0.1:9000
+php_fpm_listen_allowed_clients: "any"
+
+zend_opcache: 'no'
+
+php_fpm_apps:
+   - name: test
+     user_id: 500
+     
+is_docker_container: true

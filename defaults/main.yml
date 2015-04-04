@@ -1,0 +1,25 @@
+---
+# defaults file for provisioning
+docker_images_storage_path: /home
+
+docker_images_common_files:
+  - ansible.cfg
+  - hosts
+
+docker_images:
+  - name: nginx
+    command: "/usr/sbin/nginx"
+    expose: "80"
+    ports: "80:80"
+  - name: elasticsearch
+    command: "/usr/share/elasticsearch/bin/elasticsearch -Des.default.path.home=/usr/share/elasticsearch -Des.default.path.logs=/var/log/elasticsearch -Des.default.path.data=/var/lib/elasticsearch -Des.default.path.work=/tmp/elasticsearch -Des.default.path.conf=/etc/elasticsearch"
+    expose: "9200"
+    ports: "9200:9200"
+  - name: mongo
+    command: "/usr/bin/mongod -f /etc/mongod.conf"
+    expose: "27017"
+    ports: "27017:27017"
+  - name: php-fpm
+    command: "/usr/sbin/php-fpm --nodaemonize"
+    expose: "9000"
+    ports: "127.0.0.1:9000:9000"
