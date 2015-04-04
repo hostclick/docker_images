@@ -4,6 +4,7 @@
   
   roles:
     - hostclick.epel_repo
+    - hostclick.remi_repo
     - hostclick.php-fpm
 
   vars_files:
