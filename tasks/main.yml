@@ -15,9 +15,6 @@
   register: files_copied
   tags: docker
 
-- debug: var=files_copied
-  tags: docker
-
 - name: Copy common files required by Dockerfile
   template: src={{ item.1 }}.j2 dest={{ docker_images_storage_path }}/{{ item.0.name }}/{{ item.1 }}
   with_nested:
