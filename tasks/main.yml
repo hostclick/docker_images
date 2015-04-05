@@ -37,6 +37,7 @@
 - name: Create docker data volumes
   docker: name={{ item.name }} image={{ item.image | default('busybox') }} state=present volumes={{ item.volumes }}
   with_items: docker_data_volumes
+  when: docker_data_volumes is defined
   tags: docker
 
 - name: Stop docker containers
