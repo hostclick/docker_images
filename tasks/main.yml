@@ -68,7 +68,7 @@
   tags: docker
 
 - name: Start docker containers
-  docker: image={{ item.name }} command="{{ item.command }}" ports="{{ item.ports }}" expose="{{ item.expose }}" state=running
+  docker: image={{ item.name }} command="{{ item.command }}" ports="{{ item.ports }}" expose="{{ item.expose }}" volumes_from="{{ item.volumes_from | default(omit) }}" state=running
   with_items: docker_images
   register: docker_containers
   tags: docker
