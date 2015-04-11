@@ -1,7 +1,6 @@
 FROM centos:centos6
 
 RUN yum -y install epel-release && \
-    yum -y update && \
     yum -y install ansible --enablerepo=epel-testing && \
     yum clean all && \
 	rm -rf /etc/ansible/*
