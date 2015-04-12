@@ -65,7 +65,7 @@
   with_together:
     - docker_images
     - image_remove.results
-  when: item.1.changed
+  when: item.1.changed and not item.1.failed
   tags: docker
 
 - name: Start docker containers
