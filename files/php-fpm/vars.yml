@@ -1,4 +1,4 @@
-php_fpm_listen: ":9000"
+php_fpm_listen: "9000"
 php_fpm_listen_allowed_clients: "any"
 
 zend_opcache: 'no'
