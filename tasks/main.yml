@@ -74,7 +74,7 @@
     command: "{{ item.command }}" 
     ports: "{{ item.ports }}" 
     expose: "{{ item.expose }}" 
-    volumes: {{ item.volumes | default(omit) }} 
+    volumes: "{{ item.volumes | default(omit) }}"
     volumes_from: "{{ item.volumes_from | default(omit) }}" 
     state: reloaded 
     restart_policy: "{{ item.restart_policy | default('always') }}" 
