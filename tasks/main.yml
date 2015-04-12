@@ -29,7 +29,7 @@
   tags: docker
 
 - name: Build docker images
-  docker_image: path="{{ docker_images_storage_path }}/{{ item.name }}" name="{{ item.name }}" state=present
+  docker_image: path="{{ docker_images_storage_path }}/{{ item.name }}" name="{{ item.name }}" nocache="{{ item.nocache | default(omit) }}" state=present
   with_items: docker_images
   register: first_build
   tags: docker
@@ -61,7 +61,7 @@
   tags: docker
 
 - name: Rebuild docker images
-  docker_image: path="{{ docker_images_storage_path }}/{{ item.0.name }}" name="{{ item.0.name }}" state=build
+  docker_image: path="{{ docker_images_storage_path }}/{{ item.0.name }}" name="{{ item.0.name }}" nocache="{{ item.nocache | default(omit) }}" state=build
   with_together:
     - docker_images
     - image_remove.results
