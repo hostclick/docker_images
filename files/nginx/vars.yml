@@ -20,3 +20,12 @@ nginx_configs:
     - gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript text/x-js
     - gzip_buffers 16 8k
     - gzip_disable "MSIE [1-6]\.(?!.*SV1)"
+    
+nginx_default_site_folder: /var/www
+
+nginx_default_site:
+  default:
+     - listen 80
+     - server_name localhost
+     - root "/var/www"
+     - index index.html
