@@ -69,7 +69,16 @@
   tags: docker
 
 - name: Start docker containers
-  docker: image={{ item.name }} command="{{ item.command }}" ports="{{ item.ports }}" expose="{{ item.expose }}" volumes="{{ item.volumes | default(omit) }}" volumes_from="{{ item.volumes_from | default(omit) }}" state=reloaded restart_policy="{{ item.restart_policy | default('always') }}" restart_policy_retry="{{ item.restart_policy_retry | default('1') }}"
+  docker: 
+    image: {{ item.name }} 
+    command: "{{ item.command }}" 
+    ports: "{{ item.ports }}" 
+    expose: "{{ item.expose }}" 
+    volumes: {{ item.volumes | default(omit) }} 
+    volumes_from: "{{ item.volumes_from | default(omit) }}" 
+    state: reloaded 
+    restart_policy: "{{ item.restart_policy | default('always') }}" 
+    restart_policy_retry: "{{ item.restart_policy_retry | default('1') }}"
   with_items: docker_images
   register: docker_containers
   tags: docker
