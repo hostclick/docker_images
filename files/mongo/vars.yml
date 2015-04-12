@@ -3,3 +3,6 @@ is_docker_container: true
 mongo_type: mongod
 
 mongo_fork: "false"
+
+mongo_nojournal: "true"
+mongo_noprealloc: "true"
