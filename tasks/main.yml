@@ -70,7 +70,7 @@
 
 - name: Start docker containers
   docker: 
-    image: {{ item.name }} 
+    image: "{{ item.name }}" 
     command: "{{ item.command }}" 
     ports: "{{ item.ports }}" 
     expose: "{{ item.expose }}" 
