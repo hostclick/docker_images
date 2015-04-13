@@ -2,7 +2,7 @@ nginx_daemon: "off"
 
 nginx_configs:
   upstream:
-    - upstream php_backend { server 127.0.0.1:9000; 
+    - upstream php_backend { server unix:/var/run/php-fpm/fpm.sock; 
       keepalive 32; }
   proxy:
     - proxy_http_version 1.1
