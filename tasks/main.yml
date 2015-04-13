@@ -76,8 +76,8 @@
   docker: 
     image: "{{ item.name }}" 
     command: "{{ item.command }}" 
-    ports: "{{ item.ports }}" 
-    expose: "{{ item.expose }}" 
+    ports: "{{ item.ports | default(omit) }}" 
+    expose: "{{ item.expose | default(omit) }}" 
     volumes: "{{ item.volumes | default(omit) }}"
     volumes_from: "{{ item.volumes_from | default(omit) }}" 
     state: reloaded 
